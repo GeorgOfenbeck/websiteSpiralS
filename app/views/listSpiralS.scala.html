@@ -1,0 +1,43 @@
+@(spirals: SpiralS, form: Form[SpiralSForm.Data], postUrl: Call)(implicit request: RequestHeader, messages: Messages)
+
+@main("SpiralS") {
+
+<h1>SpiralS</h1>
+
+@* Flash shows updates to a page *@
+@request.flash.data.map{ case (name, value) =>
+<div class="@name">@value</div>
+}
+
+<table>
+    <thead>
+    <tr><th>Size</th><th>Size</th>
+    </thead>
+    <tbody>
+    <tr><td>@spirals.size</td><td>@spirals.size</td></tr>
+    </tbody>
+</table>
+
+<hr/>
+
+@* Global errors are not tied to any particular form field *@
+@if(form.hasGlobalErrors) {
+@form.globalErrors.map { error: FormError =>
+<div>
+    @error.key: @error.message
+</div>
+}
+}
+
+@helper.form(postUrl) {
+@helper.CSRF.formField
+
+@helper.inputText(form("size"))
+
+
+<button>Create widget</button>
+<img src="@{spirals.img}"/>
+
+}
+
+}
