@@ -12,7 +12,7 @@ import play.api.mvc._
 class SpiralSController @Inject()(val messagesApi: MessagesApi) extends Controller with I18nSupport {
   import SpiralSForm._
 
-  private var spiralssettings: SpiralS = SpiralS(0,"public/images/Graph.png")
+  private var spiralssettings: SpiralS =  SpiralS(0,false,true,2,false,false,false,"public/images/Graph.png", "")
 
   private val postUrl = routes.SpiralSController.generate()
 
@@ -44,15 +44,28 @@ class SpiralSController @Inject()(val messagesApi: MessagesApi) extends Controll
     val successFunction = { data: Data =>
       // This is the good case, where the form was successfully parsed as a Data.
       val size = data.size
+      val dyn = data.dyn
+      val bsize = data.basesize
+      val interleaved = data.interleaved
+      val opsize: Option[Int] = if (dyn) None else Some(size)
+
       import SpiralSThesisGui.GuiThesis._
-      val gen = new SpiralSThesis.CorewGlue(size,
-          defradix.toMap.withDefaultValue(defradix(3)))
+      val gen = new SpiralSThesis.CorewGlue(2,
+          defradix.toMap.withDefaultValue(defradix(3)), opsize,
+        interleaved, data.thread, data.basesize, data.twid_inline, data.twid_precomp
+      )
+      println(data)
+      val codedump = gen.codeexport2()
+      gen.graphexport(path = "C:\\Phd\\git\\code\\websiteSpiralS\\public\\images\\")
 
-      gen.codeexport()
-      gen.graphexport(path = "F:\\Phd\\git\\code\\play-scala-forms-example\\public\\images\\")
 
-      spiralssettings = SpiralS(size = data.size,"assets/images/Graph.png")
-      Redirect(routes.SpiralSController.listSpiralS()).flashing("info" -> "Widget added!")
+      spiralssettings = SpiralS(size = data.size, dyn = data.dyn, interleaved = data.interleaved,
+        basesize = data.basesize,
+        thread = data.thread,
+        twidinline = data.twid_inline,
+        twid_precomp =  data.twid_precomp,
+        "assets/images/Graph.png", codedump)
+      Redirect(routes.SpiralSController.listSpiralS()).flashing("info" -> "stuff")
     }
 
     val formValidationResult = form.bindFromRequest

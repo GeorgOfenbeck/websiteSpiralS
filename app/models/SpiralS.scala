@@ -7,5 +7,5 @@ package models
   * which are used for reads, distinct from the form processing DTO,
   * which are used for writes.
   */
-case class SpiralS(size: Int, img: String)
+case class SpiralS(size: Int, dyn: Boolean, interleaved: Boolean, basesize: Int, thread: Boolean, twidinline: Boolean, twid_precomp: Boolean, img: String, txt: String)
 

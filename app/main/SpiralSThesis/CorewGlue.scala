@@ -161,7 +161,7 @@ class CorewGlue(testsize: Int, //2^n
     f
   }
   //def codeexport(path: String = "C:\\Phd\\git\\code\\SpiralSTarget\\src\\main\\Test.scala") = {
-    def codeexport(path: String = "F:\\Phd\\git\\code\\SpiralSTarget\\src\\main\\Test.scala") = {
+    def codeexport(path: String = "C:\\Phd\\git\\code\\SpiralSTarget\\src\\main\\Test.scala") = {
     val stream2 = new java.io.PrintWriter(new java.io.FileOutputStream(path))
     dumpCode(stream2)
     val ingt = iniGTSkeleton(false)
@@ -178,8 +178,27 @@ class CorewGlue(testsize: Int, //2^n
     // graphexport()
   }
 
+  def codeexport2(): String = {
+    val dump = new StringWriter()
+    val stream2 = new java.io.PrintWriter(dump)
+    dumpCode(stream2)
+    val ingt = iniGTSkeleton(false)
+    val esc = codegen.emitSource((ini(ingt)), "testClass", stream2)(exposeDyn(ingt), ingt.expdata)
+    stream2.println("\n}\n")
+    if (twid_default_precomp) {
+      val ingtpre = iniGTSkeleton(true)
+      val esc2 = codegen.emitSource((ini(ingtpre)), "PreCompute", stream2)(exposeDyn(ingtpre), ingt.expdata)
+      //val esc = codegen.emitSource((DFTstart(ingt)), "testClass", stream2)(exposeDynGTSkeleton(ingt), exposeSingle)
+    }
+    stream2.println("\n}}\n")
+    stream2.flush()
+    stream2.close()
+    dump.toString
 
-  def graphexport(path: String = "F:\\Phd\\git\\code\\play-scala-forms-example\\", name: String = "Graph.dot") = {
+  }
+
+
+  def graphexport(path: String = "C:\\Phd\\git\\code\\websiteSpiralS\\", name: String = "Graph.dot") = {
     this.graphname = true
     val stream2 = new java.io.PrintWriter(new java.io.FileOutputStream(path + name))
     //dumpCode (stream2)

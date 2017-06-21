@@ -6,17 +6,10 @@
 
 @* Flash shows updates to a page *@
 @request.flash.data.map{ case (name, value) =>
-<div class="@name">@value</div>
+
 }
 
-<table>
-    <thead>
-    <tr><th>Size</th><th>Size</th>
-    </thead>
-    <tbody>
-    <tr><td>@spirals.size</td><td>@spirals.size</td></tr>
-    </tbody>
-</table>
+
 
 <hr/>
 
@@ -32,11 +25,54 @@
 @helper.form(postUrl) {
 @helper.CSRF.formField
 
-@helper.inputText(form("size"))
+<table>
+    <tbody>
+    <thead><td>Degree of Freedom</td><td>Current value</td></thead>
+    <tr><td>@helper.inputText(form("size"), 'placeholder -> "Your name")</td><td>@spirals.size</td></tr>
+    <tr>
+        <td>
+        @helper.checkbox(form("dyn"))
+    </td>
+        <td>@spirals.dyn</td>
+    </tr>
+    <tr>
+        <td>
+            @helper.checkbox(form("interleaved"))
+        </td>
+        <td>@spirals.interleaved</td>
+    </tr>
+    <tr><td>@helper.inputText(form("basesize"))</td><td>@spirals.basesize</td></tr>
+    <tr>
+        <td>
+            @helper.checkbox(form("thread"))
+        </td>
+        <td>@spirals.thread</td>
+    </tr>
+    <tr>
+        <td>
+            @helper.checkbox(form("twid_inline"))
+        </td>
+        <td>@spirals.twidinline</td>
+    </tr>
+    <tr>
+        <td>
+            @helper.checkbox(form("twid_precomp"))
+        </td>
+        <td>@spirals.twid_precomp</td>
+    </tr>
+    <tr><td>
+        <button>Create widget</button>
+    </td><td></td></tr>
+    </tbody>
+</table>
 
 
-<button>Create widget</button>
+
+
+
+
 <img src="@{spirals.img}"/>
+<pre><code class="Scala">@{spirals.txt}</code></pre>
 
 }
 

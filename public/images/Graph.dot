@@ -1,0 +1,123 @@
+digraph G {
+1 [id = "1"label=<Input>,shape=circle]
+ 1 -> 0
+62 [id = "62" label=<DFT_CT[ lb = 1 G(h<SUB> 0,1,0 </SUB>) S(h<SUB> 0,1,0 </SUB>)   4 ]>
+,shape=box]
+62 -> 802
+62 -> 73
+
+802 [id = "802" label=<DFT[G(h<SUB> 0,,1 </SUB>) S(h<SUB> ,,1 </SUB>) Tdiag(h<SUB> 0,,1 </SUB>)  T<SUP> </SUP><SUB>,1</SUB>) 4 ]>
+,shape=box]
+802 -> 819
+802 -> 863
+802 -> 863
+
+802 -> 914
+
+73 [id = "73" label=<DFT[G(h<SUB> ,,1 </SUB>) S(h<SUB> 0,1, </SUB>)   4 ]>
+,shape=box]
+73 -> 160
+
+73 -> 120
+73 -> 120
+73 -> 87
+
+160 [id = "160" label=<DFT_CT[G(h<SUB> ,,1 </SUB>) S(h<SUB> 0,1, </SUB>)   4 ]>
+,shape=box]
+160 -> 292
+160 -> 177
+
+177 [id = "177" label=<DFT[S(h<SUB> 0,1, </SUB>)    ]>
+,shape=box]
+177 -> 227
+177 -> 227
+177 -> 192
+
+177 -> 269
+
+292 [id = "292" label=<DFT[G(h<SUB> 0,,1 </SUB>) S(h<SUB> ,,1 </SUB>) Tdiag(h<SUB> 0,,1 </SUB>)  T<SUP> </SUP><SUB>,1</SUB>)  ]>
+,shape=box]
+292 -> 404
+
+292 -> 309
+292 -> 353
+292 -> 353
+
+404 [id = "404" label=<DFT_CT[G(h<SUB> 0,,1 </SUB>) S(h<SUB> ,,1 </SUB>) Tdiag(h<SUB> 0,,1 </SUB>)  T<SUP> </SUP><SUB>,1</SUB>)  ]>
+,shape=box]
+404 -> 603
+404 -> 424
+
+424 [id = "424" label=<DFT[S(h<SUB> 0,1, </SUB>)  T<SUP> </SUP><SUB>,1</SUB>)  ]>
+,shape=box]
+424 -> 496
+424 -> 496
+424 -> 444
+
+424 -> 555
+
+603 [id = "603" label=<DFT[G(h<SUB> 0,,1 </SUB>) Tdiag(h<SUB> 0,,1 </SUB>)  T<SUP> </SUP><SUB>,1</SUB>)  ]>
+,shape=box]
+603 -> 720
+
+603 -> 621
+603 -> 667
+603 -> 667
+
+720 [id = "720" label=<DFT_CT[G(h<SUB> 0,,1 </SUB>) Tdiag(h<SUB> 0,,1 </SUB>)  T<SUP> </SUP><SUB>,1</SUB>)  ]>
+,shape=box]
+720 -> 424
+720 -> 603
+
+667 [id = "667" label=<DFT[ size = 2  G(h<SUB> 0,,1 </SUB>) Tdiag(h<SUB> 0,,1 </SUB>)  T<SUP> </SUP><SUB>,1</SUB>)  ]>
+,shape=box]
+621 [id = "621" label=<F2[G(h<SUB> 0,,1 </SUB>) Tdiag(h<SUB> 0,,1 </SUB>)  T<SUP> </SUP><SUB>,1</SUB>)  ]>
+,shape=box]
+555 [id = "555" label=<DFT_CT[S(h<SUB> 0,1, </SUB>)  T<SUP> </SUP><SUB>,1</SUB>)  ]>
+,shape=box]
+555 -> 292
+555 -> 424
+
+496 [id = "496" label=<DFT[ size = 2  S(h<SUB> 0,1, </SUB>)  T<SUP> </SUP><SUB>,1</SUB>)  ]>
+,shape=box]
+444 [id = "444" label=<F2[S(h<SUB> 0,1, </SUB>)  T<SUP> </SUP><SUB>,1</SUB>)  ]>
+,shape=box]
+353 [id = "353" label=<DFT[ size = 2  G(h<SUB> 0,,1 </SUB>) S(h<SUB> ,,1 </SUB>) Tdiag(h<SUB> 0,,1 </SUB>)  T<SUP> </SUP><SUB>,1</SUB>)  ]>
+,shape=box]
+309 [id = "309" label=<F2[G(h<SUB> 0,,1 </SUB>) S(h<SUB> ,,1 </SUB>) Tdiag(h<SUB> 0,,1 </SUB>)  T<SUP> </SUP><SUB>,1</SUB>)  ]>
+,shape=box]
+269 [id = "269" label=<DFT_CT[S(h<SUB> 0,1, </SUB>)    ]>
+,shape=box]
+269 -> 177
+269 -> 292
+
+227 [id = "227" label=<DFT[ size = 2  S(h<SUB> 0,1, </SUB>)    ]>
+,shape=box]
+192 [id = "192" label=<F2[S(h<SUB> 0,1, </SUB>)    ]>
+,shape=box]
+120 [id = "120" label=<DFT[ size = 2  G(h<SUB> ,,1 </SUB>) S(h<SUB> 0,1, </SUB>)   4 ]>
+,shape=box]
+87 [id = "87" label=<F2[G(h<SUB> ,,1 </SUB>) S(h<SUB> 0,1, </SUB>)   4 ]>
+,shape=box]
+914 [id = "914" label=<DFT_CT[G(h<SUB> 0,,1 </SUB>) S(h<SUB> ,,1 </SUB>) Tdiag(h<SUB> 0,,1 </SUB>)  T<SUP> </SUP><SUB>,1</SUB>) 4 ]>
+,shape=box]
+914 -> 603
+914 -> 424
+
+863 [id = "863" label=<DFT[ size = 2  G(h<SUB> 0,,1 </SUB>) S(h<SUB> ,,1 </SUB>) Tdiag(h<SUB> 0,,1 </SUB>)  T<SUP> </SUP><SUB>,1</SUB>) 4 ]>
+,shape=box]
+819 [id = "819" label=<F2[G(h<SUB> 0,,1 </SUB>) S(h<SUB> ,,1 </SUB>) Tdiag(h<SUB> 0,,1 </SUB>)  T<SUP> </SUP><SUB>,1</SUB>) 4 ]>
+,shape=box]
+38 [id = "38" label=<DFT[ size = 2 , lb = 1 G(h<SUB> 0,1,0 </SUB>) S(h<SUB> 0,1,0 </SUB>)   4 ]>
+,shape=box]
+12 [id = "12" label=<F2[ lb = 1 G(h<SUB> 0,1,0 </SUB>) S(h<SUB> 0,1,0 </SUB>)   4 ]>
+,shape=box]
+0 [id = "0"label=<"Top Level">
+,shape=polygon]
+0 -> 12
+0 -> 38
+0 -> 38
+
+0 -> 62
+
+}
