@@ -28,7 +28,7 @@
 <table>
     <tbody>
     <thead><td>Degree of Freedom</td><td>Current value</td></thead>
-    <tr><td>@helper.inputText(form("size"), 'placeholder -> "Your name")</td><td>@spirals.size</td></tr>
+    <tr><td>@helper.inputText(form("size"))</td><td>@spirals.size</td></tr>
     <tr>
         <td>
         @helper.checkbox(form("dyn"))
@@ -61,7 +61,7 @@
         <td>@spirals.twid_precomp</td>
     </tr>
     <tr><td>
-        <button>Create widget</button>
+        <button>Generate Code</button>
     </td><td></td></tr>
     </tbody>
 </table>

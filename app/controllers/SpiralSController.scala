@@ -12,7 +12,7 @@ import play.api.mvc._
 class SpiralSController @Inject()(val messagesApi: MessagesApi) extends Controller with I18nSupport {
   import SpiralSForm._
 
-  private var spiralssettings: SpiralS =  SpiralS(0,false,true,2,false,false,false,"public/images/Graph.png", "")
+  private var spiralssettings: SpiralS =  SpiralS(2,2,false,true,false,false,false,"public/images/Graph.png", "")
 
   private val postUrl = routes.SpiralSController.generate()
 
@@ -33,6 +33,7 @@ class SpiralSController @Inject()(val messagesApi: MessagesApi) extends Controll
   // This will be the action that handles our form post
   def generate = Action { implicit request: Request[AnyContent] =>
     val errorFunction = { formWithErrors: Form[Data] =>
+      assert(false)
       // This is the bad case, where the form had validation errors.
       // Let's show the user the form again, with the errors highlighted.
       // Note how we pass the form with errors to the template.
@@ -48,7 +49,6 @@ class SpiralSController @Inject()(val messagesApi: MessagesApi) extends Controll
       val bsize = data.basesize
       val interleaved = data.interleaved
       val opsize: Option[Int] = if (dyn) None else Some(size)
-
       import SpiralSThesisGui.GuiThesis._
       val gen = new SpiralSThesis.CorewGlue(2,
           defradix.toMap.withDefaultValue(defradix(3)), opsize,
@@ -59,8 +59,7 @@ class SpiralSController @Inject()(val messagesApi: MessagesApi) extends Controll
       gen.graphexport(path = "C:\\Phd\\git\\code\\websiteSpiralS\\public\\images\\")
 
 
-      spiralssettings = SpiralS(size = data.size, dyn = data.dyn, interleaved = data.interleaved,
-        basesize = data.basesize,
+      spiralssettings = SpiralS(size = data.size, basesize = data.basesize, dyn = data.dyn, interleaved = data.interleaved,
         thread = data.thread,
         twidinline = data.twid_inline,
         twid_precomp =  data.twid_precomp,
